@@ -10,7 +10,7 @@ public class Demo {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        HANGHOA hh = null;
+        HANGHOA hh;
         KHO kho = new KHO();
         int chon = 0;
         do {
@@ -59,7 +59,13 @@ public class Demo {
                                 kho.NhapKho(hh, sl);
                                 break;
                             case 2:
-                                
+                                System.out.println("-------------Huỷ hàng---------------");
+                                sc.nextLine();
+                                System.out.println("Nhập mã hàng: ");
+                                String mahang_huy = sc.nextLine();
+                                System.out.println("Nhập số lượng: ");
+                                int sl_huy = sc.nextInt();
+                                kho.xuatkho(mahang_huy, sl_huy);
                                 break;
                             case 3: 
                                 System.out.println("Thống kê kho:");

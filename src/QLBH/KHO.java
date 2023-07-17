@@ -33,14 +33,22 @@ public class KHO {
             kho.add(e);
             SLHH[n++] = soluong;
         } else {
-            for (HANGHOA obj : kho){
-                if (obj.getMaHang().equals(e.getMaHang())){
-                    SLHH[kho.indexOf(obj)] += soluong;
-                } else {
-                    kho.add(e);
-                    SLHH[n++] = soluong;
+//            for (HANGHOA obj : kho){
+//                if (obj.getMaHang().equals(e.getMaHang())){
+//                    SLHH[kho.indexOf(obj)] += soluong;
+//                } else {
+//                    kho.add(e);
+//                    SLHH[n++] = soluong;
+//                }
+//            }
+                for (int i = 0 ; i < kho.size(); i++){
+                    if (kho.get(i).getMaHang().equals(e.getMaHang())){
+                        SLHH[i] += soluong;
+                    } else {
+                        kho.add(e);
+                        SLHH[n++] = soluong;
+                    }
                 }
-            }
         }
           
     }
@@ -52,8 +60,15 @@ public class KHO {
             System.out.println("|-----+--------------------+----------+----------+-------+----------+----------+----------+--------|");
             obj.output();
             System.out.printf("%8d|\n",SLHH[kho.indexOf(obj)]);
-            
         }
         System.out.println("+-----+--------------------+----------+----------+-------+----------+----------+----------+--------+");
+    }
+    
+    public void xuatkho(String e, int soluong){
+        for (HANGHOA obj: kho){
+            if (obj.getMaHang().equals(e)){
+                SLHH[kho.indexOf(obj)] -= soluong;
+            }
+        }
     }
 }
