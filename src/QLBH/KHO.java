@@ -61,10 +61,24 @@ public class KHO {
     }
     
     public void xuatkho(String e, int soluong){
-        for (HANGHOA obj: kho){
-            if (obj.getMaHang().equals(e)){
-                SLHH[kho.indexOf(obj)] -= soluong;
+        int flag = -1;
+        
+            
+            for (int i = 0 ; i < kho.size(); i++){
+                if (kho.get(i).getMaHang().equals(e)){
+                    flag = i;
+                    break;
+                }              
             }
-        }
+            if (flag == -1){
+                System.out.println("Không có sản phẩm trong kho!");
+            } else {
+                if (SLHH[flag] >= soluong){
+                    SLHH[flag] -= soluong;
+                } else {
+                    System.out.println("Không đủ số lượng trong kho để huỷ!");
+                }
+            }
+        
     }
 }
