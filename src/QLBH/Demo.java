@@ -72,6 +72,7 @@ public class Demo {
                                 kho.ThongKe();
                                 break;
                             case 4:
+                                
                                 break;
                             default: 
                                 chon_QuanLy = 0;

@@ -33,26 +33,22 @@ public class KHO {
             kho.add(e);
             SLHH[n++] = soluong;
         } else {
-//            for (HANGHOA obj : kho){
-//                if (obj.getMaHang().equals(e.getMaHang())){
-//                    SLHH[kho.indexOf(obj)] += soluong;
-//                } else {
-//                    kho.add(e);
-//                    SLHH[n++] = soluong;
-//                }
-//            }
-                for (int i = 0 ; i < kho.size(); i++){
-                    if (kho.get(i).getMaHang().equals(e.getMaHang())){
-                        SLHH[i] += soluong;
-                    } else {
-                        kho.add(e);
-                        SLHH[n++] = soluong;
-                    }
-                }
-        }
-          
+            int flag = -1;
+            for (int i = 0 ; i < kho.size(); i++){
+                if (kho.get(i).getMaHang().equals(e.getMaHang())){
+                    flag = i;
+                    break;
+                }              
+            }
+            if (flag == -1){
+                kho.add(e);
+                SLHH[n++] = soluong;
+            } else {
+                SLHH[flag] += soluong;
+            }
+        }   
     }
-    
+   
     public void ThongKe(){
         System.out.println("+-----+--------------------+----------+----------+-------+----------+----------+----------+--------+");
         System.out.println("|Mã   |Tên hàng            |Loai      |Xuất sứ   |ĐVT    |Giá bán   |NSX       |HSD       |So Luong|");
