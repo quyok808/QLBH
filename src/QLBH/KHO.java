@@ -61,24 +61,31 @@ public class KHO {
     }
     
     public void xuatkho(String e, int soluong){
-        int flag = -1;
-        
-            
-            for (int i = 0 ; i < kho.size(); i++){
-                if (kho.get(i).getMaHang().equals(e)){
-                    flag = i;
-                    break;
-                }              
-            }
-            if (flag == -1){
-                System.out.println("Không có sản phẩm trong kho!");
+        int flag = -1; 
+        for (int i = 0 ; i < kho.size(); i++){
+            if (kho.get(i).getMaHang().equals(e)){
+                flag = i;
+                break;
+            }              
+        }
+        if (flag == -1){
+            System.out.println("Không có sản phẩm trong kho!");
+        } else {
+            if (SLHH[flag] >= soluong){
+                SLHH[flag] -= soluong;
             } else {
-                if (SLHH[flag] >= soluong){
-                    SLHH[flag] -= soluong;
-                } else {
-                    System.out.println("Không đủ số lượng trong kho để huỷ!");
-                }
+                System.out.println("Không đủ số lượng trong kho để huỷ!");
             }
-        
+        }
+    }
+    
+    public void menu(){
+        System.out.println("+--------------------+----------+");
+        System.out.println("|Tên hàng hoá        |Giá bán   |");
+        for (HANGHOA obj : kho){
+            System.out.println("|--------------------+----------|");
+            System.out.printf("|%20s|%10f|\n",obj.getTenHang(),obj.getGiaBan());
+        }
+        System.out.println("+--------------------+----------+");
     }
 }

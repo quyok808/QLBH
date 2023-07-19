@@ -1,18 +1,17 @@
 package QLBH;
 
 import java.util.Scanner;
-
 /**
  *
  * @author account
  */
 public class Demo {
-
-    public static void main(String[] args) {
+	
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         HANGHOA hh;
         KHO kho = new KHO();
-        int chon = 0;
+        int chon;
         do {
             System.out.println("0: thoat");
             System.out.println("1: Ban Hang");
@@ -21,7 +20,7 @@ public class Demo {
             chon = sc.nextInt();
             switch(chon){
                 case 1:
-                    int chon_banHang = 0;
+                    int chon_banHang;
                     do {
                         System.out.println("0: thoat");
                         System.out.println("1: Chon mon");
@@ -30,6 +29,13 @@ public class Demo {
                         chon_banHang = sc.nextInt();
                         switch(chon_banHang){
                             case 1:
+                                kho.menu();
+                                int chon_menu;
+                                do{
+                                    System.out.println("Chọn 0 để hoàn thành order!");
+                                    chon_menu = sc.nextInt();
+                                    
+                                }while(chon_menu != 0);
                                 break;
                             case 2: 
                                 break;
@@ -40,7 +46,7 @@ public class Demo {
                     }while (chon_banHang != 0);
                     break;
                 case 2:
-                    int chon_QuanLy = 0;
+                    int chon_QuanLy;
                     do {
                         System.out.println("0: Thoat");
                         System.out.println("1: Nhap kho");
@@ -67,7 +73,7 @@ public class Demo {
                                 int sl_huy = sc.nextInt();
                                 kho.xuatkho(mahang_huy, sl_huy);
                                 break;
-                            case 3: 
+                            case 3:
                                 System.out.println("Thống kê kho:");
                                 kho.ThongKe();
                                 break;
