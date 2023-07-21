@@ -94,11 +94,4 @@ public class KHO {
         }
         System.out.println("+--------------------+----------+");
     }
-    
-    public HANGHOA get_MaHangFromMenu(int i){
-        HANGHOA e = null;
-        System.out.println(kho.get(0).getTenHang());
-        e = kho.get(i);
-        return e;
-    }
 }

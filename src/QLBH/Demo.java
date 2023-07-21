@@ -32,13 +32,16 @@ public class Demo {
                         switch(chon_banHang){
                             case 1:
                                 hd = new CTHD();
-                                System.out.println("Chọn -10 để hoàn thành order!");
+                                System.out.println("Chọn -1 để hoàn thành order!");
                                 int chon_menu;
                                 do{
                                     kho.menu();                                   
                                     chon_menu = sc.nextInt();
-                                    hd.input(chon_menu);
-                                }while(chon_menu != -10);
+                                    if (chon_menu == -1) 
+                                        break;
+                                    hd.input(kho.getKho().get(chon_menu));
+                                    hd.output();
+                                }while(chon_menu != -1);
                                 break;
                             case 2: 
                                 break;
