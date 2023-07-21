@@ -7,7 +7,6 @@ import java.util.*;
 public class KHO {
     private ArrayList<HANGHOA> kho = new ArrayList<>();
     private int tongkho,n=0;
-    private int SLHH[] = new int[100];
 //================================================ constructer
     public KHO() {
     }
@@ -28,10 +27,9 @@ public class KHO {
         this.tongkho = tongkho;
     }
     //=============================================== method
-    public void NhapKho(HANGHOA e, int soluong){        
+    public void NhapKho(HANGHOA e){        
         if (kho.isEmpty()){
             kho.add(e);
-            SLHH[n++] = soluong;
         } else {
             int flag = -1;
             for (int i = 0 ; i < kho.size(); i++){
@@ -42,11 +40,20 @@ public class KHO {
             }
             if (flag == -1){
                 kho.add(e);
-                SLHH[n++] = soluong;
             } else {
-                SLHH[flag] += soluong;
+                kho.get(flag).setSoluong(kho.get(flag).getSoluong()+e.getSoluong());
             }
         }   
+        Sort_MaHang();
+    }
+    
+    public void Sort_MaHang(){
+        Collections.sort(kho, new Comparator<HANGHOA>() {
+            @Override
+            public int compare(HANGHOA o1, HANGHOA o2) {
+                return o1.getMaHang().compareTo(o2.getMaHang());
+            }
+        });
     }
    
     public void ThongKe(){
@@ -55,7 +62,6 @@ public class KHO {
         for (HANGHOA obj : kho){
             System.out.println("|-----+--------------------+----------+----------+-------+----------+----------+----------+--------|");
             obj.output();
-            System.out.printf("%8d|\n",SLHH[kho.indexOf(obj)]);
         }
         System.out.println("+-----+--------------------+----------+----------+-------+----------+----------+----------+--------+");
     }
@@ -71,10 +77,10 @@ public class KHO {
         if (flag == -1){
             System.out.println("Không có sản phẩm trong kho!");
         } else {
-            if (SLHH[flag] >= soluong){
-                SLHH[flag] -= soluong;
+            if (kho.get(flag).getSoluong() >= soluong){
+                kho.get(flag).setSoluong(kho.get(flag).getSoluong()-soluong);
             } else {
-                System.out.println("Không đủ số lượng trong kho để huỷ!");
+                System.out.println("Không đủ số lượng trong kho để xuất!");
             }
         }
     }
@@ -87,5 +93,12 @@ public class KHO {
             System.out.printf("|%20s|%10f|\n",obj.getTenHang(),obj.getGiaBan());
         }
         System.out.println("+--------------------+----------+");
+    }
+    
+    public HANGHOA get_MaHangFromMenu(int i){
+        HANGHOA e = null;
+        System.out.println(kho.get(0).getTenHang());
+        e = kho.get(i);
+        return e;
     }
 }

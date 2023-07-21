@@ -7,15 +7,17 @@ import java.util.Scanner;
  * NGUYEN CONG QUY
  */
 public class HANGHOA {
+//================================= Properties =====================
     private String MaHang, TenHang, Loai, XuatXu, DVT;
     private double GiaBan;
     private Date NSX = new Date();
     private Date HSD = new Date();
-
+    private int soluong;
+//================================= Constructer =====================
     public HANGHOA() {
     }
 
-    public HANGHOA(String MaHang, String TenHang, String Loai, String XuatXu, String DVT, double GiaBan,int ngaysx, int thangsx, int namsx,int ngayhsd, int thanghsd, int namhsd) {
+    public HANGHOA(String MaHang, String TenHang, String Loai, String XuatXu, String DVT, double GiaBan,int ngaysx, int thangsx, int namsx,int ngayhsd, int thanghsd, int namhsd, int soluong) {
         this.MaHang = MaHang;
         this.TenHang = TenHang;
         this.Loai = Loai;
@@ -24,8 +26,9 @@ public class HANGHOA {
         this.GiaBan = GiaBan;
         this.NSX = new Date(ngaysx, thangsx, namsx);
         this.HSD = new Date(ngayhsd, thanghsd, namhsd);
+        this.soluong = soluong;
     }
-
+//================================= Getter and setter =====================
     public String getMaHang() {
         return MaHang;
     }
@@ -89,7 +92,16 @@ public class HANGHOA {
     public void setHSD(Date HSD) {
         this.HSD = HSD;
     }
+    
+    public int getSoluong() {
+        return soluong;
+    }
 
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
+//================================= Methods =====================
     public void input(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập mã hàng: ");
@@ -108,9 +120,11 @@ public class HANGHOA {
         NSX.input();
         System.out.println("Nhập HSD: ");
         HSD.input();
+        System.out.println("Nhập số lượng: ");
+        setSoluong(sc.nextInt());
     }
     
     public void output(){
-        System.out.printf("|%5s|%20s|%10s|%10s|%7s|%10f|%10s|%10s|",MaHang,TenHang,Loai,XuatXu,DVT,GiaBan,NSX.output(),HSD.output());
+        System.out.printf("|%5s|%20s|%10s|%10s|%7s|%10f|%10s|%10s|%8d|\n",MaHang,TenHang,Loai,XuatXu,DVT,GiaBan,NSX.output(),HSD.output(),soluong);
     }   
 }

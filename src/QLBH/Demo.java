@@ -11,6 +11,7 @@ public class Demo {
         Scanner sc = new Scanner(System.in);
         HANGHOA hh;
         KHO kho = new KHO();
+        CTHD hd = null;
         int chon;
         do {
             System.out.println("0: thoat");
@@ -25,19 +26,24 @@ public class Demo {
                         System.out.println("0: thoat");
                         System.out.println("1: Chon mon");
                         System.out.println("2: Thanh toan");
+                        System.out.println("3: Test");
                         System.out.println("Chuc nang ban chon la: ");
                         chon_banHang = sc.nextInt();
                         switch(chon_banHang){
                             case 1:
-                                kho.menu();
+                                hd = new CTHD();
+                                System.out.println("Chọn -10 để hoàn thành order!");
                                 int chon_menu;
                                 do{
-                                    System.out.println("Chọn 0 để hoàn thành order!");
+                                    kho.menu();                                   
                                     chon_menu = sc.nextInt();
-                                    
-                                }while(chon_menu != 0);
+                                    hd.input(chon_menu);
+                                }while(chon_menu != -10);
                                 break;
                             case 2: 
+                                break;
+                            case 3:
+                                hd.output();
                                 break;
                             default:
                                 chon_banHang = 0;
@@ -60,9 +66,7 @@ public class Demo {
                                 System.out.println("-------------Nhập kho---------------");
                                 hh = new HANGHOA();
                                 hh.input();
-                                System.out.println("Số lượng nhập kho: ");
-                                int sl = sc.nextInt();
-                                kho.NhapKho(hh, sl);
+                                kho.NhapKho(hh);
                                 break;
                             case 2:
                                 System.out.println("-------------Huỷ hàng---------------");
