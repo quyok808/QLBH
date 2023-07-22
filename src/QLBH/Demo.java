@@ -26,7 +26,6 @@ public class Demo {
                         System.out.println("0: thoat");
                         System.out.println("1: Chon mon");
                         System.out.println("2: Thanh toan");
-                        System.out.println("3: Test");
                         System.out.println("Chuc nang ban chon la: ");
                         chon_banHang = sc.nextInt();
                         switch(chon_banHang){
@@ -40,12 +39,9 @@ public class Demo {
                                     if (chon_menu == -1) 
                                         break;
                                     hd.input(kho.getKho().get(chon_menu));
-                                    hd.output();
                                 }while(chon_menu != -1);
                                 break;
                             case 2: 
-                                break;
-                            case 3:
                                 hd.output();
                                 break;
                             default:

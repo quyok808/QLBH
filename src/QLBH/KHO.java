@@ -66,23 +66,20 @@ public class KHO {
         System.out.println("+-----+--------------------+----------+----------+-------+----------+----------+----------+--------+");
     }
     
-    public void xuatkho(String e, int soluong){
-        int flag = -1; 
-        for (int i = 0 ; i < kho.size(); i++){
-            if (kho.get(i).getMaHang().equals(e)){
-                flag = i;
-                break;
-            }              
-        }
+    public int xuatkho(String e, int soluong){
+        int flag; 
+        flag = Tim_MaHang(e);
         if (flag == -1){
             System.out.println("Không có sản phẩm trong kho!");
         } else {
             if (kho.get(flag).getSoluong() >= soluong){
                 kho.get(flag).setSoluong(kho.get(flag).getSoluong()-soluong);
+                return 1;
             } else {
                 System.out.println("Không đủ số lượng trong kho để xuất!");
             }
         }
+        return 0;
     }
     
     public void menu(){
@@ -93,5 +90,14 @@ public class KHO {
             System.out.printf("|%20s|%10f|\n",obj.getTenHang(),obj.getGiaBan());
         }
         System.out.println("+--------------------+----------+");
+    }
+    
+    public int Tim_MaHang(String Mahang){
+        for (HANGHOA obj : kho){
+            if (obj.getMaHang().equals(Mahang)){
+                return kho.indexOf(obj);
+            }
+        }
+        return -1;
     }
 }

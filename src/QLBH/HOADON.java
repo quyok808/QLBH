@@ -92,8 +92,8 @@ public class HOADON {
     }
     
     public void output(){
-        System.out.println("Số HD: " + getSoHD());
-        System.out.println("Ngày lập: " + getNgayLap());
-        System.out.println("Thành tiền: " + getThanhtien());
+        System.out.printf("|Số HD: %30s|\n", getSoHD());
+        System.out.printf("|Ngày lập: %27s|\n", getNgayLap());
+        System.out.printf("|Thành tiền: %25f|\n", getThanhtien());
     }
 }

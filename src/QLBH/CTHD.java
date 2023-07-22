@@ -9,7 +9,6 @@ public class CTHD{
 //================================= Properties ======================
     private ArrayList<HANGHOA> cthd = new ArrayList<>();
     private KHO kho = new KHO();
-    private double Thanhtien;
     private HOADON hd = new HOADON();
     private int[] SLOrder = new int[100];
     private int n = 0;
@@ -60,27 +59,18 @@ public class CTHD{
         this.kho = kho;
     }
 
-    public double getThanhtien() {
-        return Thanhtien;
-    }
-
-    public void setThanhtien(double Thanhtien) {
-        this.Thanhtien = Thanhtien;
-    }
-
-
-    
 //================================= Methods ===============
+    
     public void input(HANGHOA e){
         Scanner sc = new Scanner(System.in);
-        cthd.add(e);
         System.out.println("Số lượng: ");
         int soluong = sc.nextInt();
-        add_Sl(e, soluong);
-   }
-    
-    public void add_Sl(HANGHOA e, int soluong){
-        if (n == 0){
+        int check = kho.xuatkho(e.getMaHang(), soluong);
+        if ( check == 0){
+            return;
+        }
+        if (n == 0 && cthd.isEmpty()){
+            cthd.add(e);
             SLOrder[n++] = soluong;
         } else {
             int flag = -1;
@@ -91,6 +81,7 @@ public class CTHD{
                 }  
             }
             if (flag == -1) {
+                cthd.add(e);
                 SLOrder[n++] = soluong;
             } else {
                 SLOrder[flag] += soluong;
@@ -101,15 +92,15 @@ public class CTHD{
     public double thanhtien(){
         double tongtien = 0;
         for (int i = 0; i < cthd.size(); i++){
-            tongtien= cthd.get(i).getGiaBan() + SLOrder[i];
+            tongtien += (cthd.get(i).getGiaBan() * SLOrder[i]);
         }
         return tongtien;
     }
     
     public void output(){
+        System.out.println("+-------------------------------------+");
+        hd.setThanhtien(thanhtien());
         hd.output();
-        hd.setThanhtien(thanhtien());  
-        
         System.out.println("+--------------------+----------+-----+");
         System.out.println("|Tên hàng hoá        |Giá bán   |SL   |");
         for (HANGHOA obj : cthd){
