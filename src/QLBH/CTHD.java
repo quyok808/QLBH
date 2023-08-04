@@ -65,8 +65,8 @@ public class CTHD{
         Scanner sc = new Scanner(System.in);
         System.out.println("Số lượng: ");
         int soluong = sc.nextInt();
-        int check = kho.xuatkho(e.getMaHang(), soluong);
-        if ( check == 0){
+        if (e.getSoluong() < soluong){
+            System.out.println("Không đủ số lượng trong kho!");
             return;
         }
         if (n == 0 && cthd.isEmpty()){
@@ -86,7 +86,12 @@ public class CTHD{
             } else {
                 SLOrder[flag] += soluong;
             }
-        }  
+        }
+        for(int i = 0; i < kho.getKho().size(); i++){
+            if (kho.getKho().get(i).getMaHang().equals(e.getMaHang()) && kho.getKho().get(i).getSoluong() >= soluong){
+                kho.getKho().get(i).setSoluong(kho.getKho().get(i).getSoluong()-soluong);
+            }
+        }
     }
     
     public double thanhtien(){
@@ -105,7 +110,8 @@ public class CTHD{
         System.out.println("|Tên hàng hoá        |Giá bán   |SL   |");
         for (HANGHOA obj : cthd){
             System.out.println("|--------------------+----------+-----+");
-            System.out.printf("|%20s|%10f|%5d|\n",obj.getTenHang(),obj.getGiaBan(),SLOrder[cthd.indexOf(obj)]);
+            int soluong_xuatkho = SLOrder[cthd.indexOf(obj)];
+            System.out.printf("|%20s|%10f|%5d|\n",obj.getTenHang(),obj.getGiaBan(),soluong_xuatkho);
         }
         System.out.println("+--------------------+----------+-----+");
     }
