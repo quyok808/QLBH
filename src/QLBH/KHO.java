@@ -23,8 +23,8 @@ public class KHO {
         return tongkho;
     }
 
-    public void setTongkho(int tongkho) {
-        this.tongkho = tongkho;
+    public void setTongkho() {
+        this.tongkho = kho.size();
     }
     //=============================================== method
     public void NhapKho(HANGHOA e){        
@@ -66,20 +66,17 @@ public class KHO {
         System.out.println("+-----+--------------------+----------+----------+-------+----------+----------+----------+--------+");
     }
     
-    public int xuatkho(String e, int soluong){
-        int flag; 
-        flag = Tim_MaHang(e);
+    public void xuatkho(String Mahang, int soluong){
+        int flag = Tim_MaHang(Mahang);
         if (flag == -1){
             System.out.println("Không có sản phẩm trong kho!");
         } else {
             if (kho.get(flag).getSoluong() >= soluong){
                 kho.get(flag).setSoluong(kho.get(flag).getSoluong()-soluong);
-                return 1;
             } else {
                 System.out.println("Không đủ số lượng trong kho để xuất!");
             }
         }
-        return 0;
     }
     
     public void menu(){
@@ -93,11 +90,11 @@ public class KHO {
     }
     
     public int Tim_MaHang(String Mahang){
-        for (HANGHOA obj : kho){
-            if (obj.getMaHang().equals(Mahang)){
-                return kho.indexOf(obj);
-            }
+        int tim_thay = -1;
+        for (int i = 0; i < kho.size(); i++){
+            if (kho.get(i).getMaHang().equals(Mahang))
+                tim_thay = i;
         }
-        return -1;
+        return tim_thay;
     }
 }

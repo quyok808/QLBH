@@ -61,14 +61,8 @@ public class CTHD{
 
 //================================= Methods ===============
     
-    public void input(HANGHOA e){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Số lượng: ");
-        int soluong = sc.nextInt();
-        if (e.getSoluong() < soluong){
-            System.out.println("Không đủ số lượng trong kho!");
-            return;
-        }
+
+    public int input_CTHD(HANGHOA e, int soluong){
         if (n == 0 && cthd.isEmpty()){
             cthd.add(e);
             SLOrder[n++] = soluong;
@@ -87,14 +81,10 @@ public class CTHD{
                 SLOrder[flag] += soluong;
             }
         }
-        for(int i = 0; i < kho.getKho().size(); i++){
-            if (kho.getKho().get(i).getMaHang().equals(e.getMaHang()) && kho.getKho().get(i).getSoluong() >= soluong){
-                kho.getKho().get(i).setSoluong(kho.getKho().get(i).getSoluong()-soluong);
-            }
-        }
+        return 0;
     }
     
-    public double thanhtien(){
+    public double thanhtien(){                    
         double tongtien = 0;
         for (int i = 0; i < cthd.size(); i++){
             tongtien += (cthd.get(i).getGiaBan() * SLOrder[i]);
