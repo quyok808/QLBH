@@ -44,19 +44,20 @@ public class Demo {
                                     HANGHOA t;
                                     t = kho.getKho().get(chon_menu);
                                     
-                                    if (kho.Tim_MaHang(t.getMaHang()) == -1) {
-                                    	System.out.println("Không có hàng này trong kho!");
-                                    } else {
-                                    	int check;
-	                                    check = kho.xuatkho(kho.getKho().get(chon_menu).getMaHang(), soluong);
-	                                    if (check == 1) {
+//                                    if (kho.Tim_MaHang(t.getMaHang()) == -1) {
+//                                    	System.out.println("Không có hàng này trong kho!");
+//                                    } else {
+//                                    	int check;
+//	                                    check = kho.xuatkho(kho.getKho().get(chon_menu).getMaHang(), soluong);
+//	                                    if (check == 1) {
 	                                    	hd.input_CTHD(t, soluong);
-	                                    } 
-                                    }
+//	                                    } 
+//                                    }
                                 }while(chon_menu != -1);
                                 break;
-                            case 2: 
+                            case 2:
                                 hd.output();
+                                hd.Tru();
                                 break;
                             default:
                                 chon_banHang = 0;
@@ -94,6 +95,7 @@ public class Demo {
                                 System.out.println("Thống kê kho:");
                                 kho.ThongKe();
                                 break;
+                                
                             case 4:
                                 
                                 break;

@@ -9,6 +9,7 @@ public class KHO {
     private int tongkho,n=0;
 //================================================ constructer
     public KHO() {
+        init();
     }
 //================================================ getter and setter
     public ArrayList<HANGHOA> getKho() {
@@ -63,11 +64,12 @@ public class KHO {
             System.out.println("|-----+--------------------+----------+----------+-------+----------+----------+----------+--------|");
             obj.output();
         }
-        System.out.println("+-----+--------------------+----------+----------+-------+----------+----------+----------+--------+");
+        System.out.println("+--1---+--------------------+----------+----------+-------+----------+----------+----------+--------+");
     }
     
-    public void xuatkho(String Mahang, int soluong){
-        int flag = Tim_MaHang(Mahang);
+    public void xuatkho(String e, int soluong){
+        int flag; 
+        flag = Tim_MaHang(e);
         if (flag == -1){
             System.out.println("Không có sản phẩm trong kho!");
         } else {
@@ -96,5 +98,13 @@ public class KHO {
                 tim_thay = i;
         }
         return tim_thay;
+    }
+    
+    public void init(){
+        kho.add(new HANGHOA("1", "1", "1", "1", "1", 1, 1, 1, 1, 1, 1, 1, 10));
+        kho.add(new HANGHOA("2", "2", "2", "2", "2", 2, 2, 2, 2, 2, 2, 2, 10));
+        kho.add(new HANGHOA("3", "3", "3", "3", "3", 3, 3, 3, 3, 3, 3, 3, 10));
+        kho.add(new HANGHOA("4", "4", "4", "4", "4", 4, 4, 4, 4, 4, 4, 4, 10));
+        kho.add(new HANGHOA("5", "5", "5", "5", "5", 5, 5, 1, 5, 5, 5, 5, 10));
     }
 }

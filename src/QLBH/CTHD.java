@@ -15,7 +15,7 @@ public class CTHD{
     
 //================================= Constructer =====================
     public CTHD() {
-        hd.init_HD();
+        hd.init_HD(); 
     }
 //================================= Getter and setter ===============
 
@@ -101,8 +101,15 @@ public class CTHD{
         for (HANGHOA obj : cthd){
             System.out.println("|--------------------+----------+-----+");
             int soluong_xuatkho = SLOrder[cthd.indexOf(obj)];
-            System.out.printf("|%20s|%10f|%5d|\n",obj.getTenHang(),obj.getGiaBan(),soluong_xuatkho);
+            System.out.printf("|%20s|%10f|%5d|\n",obj.getTenHang(),obj.getGiaBan(),soluong_xuatkho);   
         }
         System.out.println("+--------------------+----------+-----+");
+    }
+    
+    public void Tru(){
+        for (HANGHOA obj : cthd){
+            int soluong_xuatkho = SLOrder[cthd.indexOf(obj)];
+            kho.xuatkho(obj.getMaHang(), soluong_xuatkho);
+        }
     }
 }
